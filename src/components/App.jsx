@@ -1,11 +1,14 @@
 import { Component } from 'react';
+import { Watch } from 'react-loader-spinner';
 
-import { NewAPI } from './API/API';
+import { ServiceAPI } from './API/API';
 import { Searchbar } from './Searchbar/Searchbar';
 import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Button } from './Button/Button';
+import { Loader } from './Loader/Loader';
+import { Modal } from './Modal/Modal';
 
-
+import styles from './App.module.css';
 
 export class App extends Component {
   state = {
@@ -31,7 +34,7 @@ export class App extends Component {
   getPicture = () => {
     const { query } = this.state;
     const { page } = this.state;
-    NewAPI(query, page)
+    ServiceAPI(query, page)
       .then(this.dataProcessing)
       .catch(error => this.setState({ error, status: 'rejected' }));
   };
@@ -81,19 +84,21 @@ export class App extends Component {
         )}
 
         {status === 'pending' && (
-          <div className={styles.ToWatch}>
-            <ToWatch
+          <div className={styles.Watch}>
+            <Watch
               color="00BFFF"
               height={200}
               width={200}
               arialabel="loading"
             />
+            <Loader />
           </div>
         )}
 
         {status === 'rejected' && (
           <div className={styles.ImageGallery}>
             <p>{'Something went wrong! ${error}'}</p>
+            <Loader />
           </div>
         )}
 

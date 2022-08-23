@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 
-import { ImageGalleryItem } from './ImageGalleryItem/ImageGalleryItem';
+import { ImageGalleryItem } from '../ImageGalleryItem/ImageGalleryItem';
+import styles from './ImageGallery.module.css';
 
 
 export const ImageGallery = ({ data, onClick }) => {
@@ -14,7 +15,7 @@ export const ImageGallery = ({ data, onClick }) => {
 
   return (
     <>
-      <ul className={ImageGallery} onClick={imageClick}>
+      <ul className={styles.ImageGallery} onClick={imageClick}>
         <ImageGalleryItem images={data} />
       </ul>
     </>

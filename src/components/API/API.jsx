@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const NewAPI = (q, page) => {
+export const ServiceAPI = (q, page) => {
   const options = {
     params: {
       key: '28261012-775c2e5140cc374d66361da3d',
