@@ -10,6 +10,7 @@ import { Modal } from './Modal/Modal';
 
 import styles from './App.module.css';
 
+
 export class App extends Component {
   state = {
     query: '',
