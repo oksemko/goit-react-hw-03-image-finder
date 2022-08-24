@@ -49,6 +49,7 @@ render() {
         <input
           className={styles.SearchFormInput}
           type="text"
+          name="searchQuery"
           autoComplete="off"
           autoFocus
           placeholder="Search images and photos ... 👀"

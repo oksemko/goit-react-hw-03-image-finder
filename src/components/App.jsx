@@ -22,7 +22,7 @@ export class App extends Component {
     total: 0,
   };
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(_prevProps, prevState) {
     if (this.state.query !== prevState.query) {
       this.setState({ status: 'pending', data: [], page: 1 }, this.getPicture);
     }
@@ -58,14 +58,46 @@ export class App extends Component {
     const newData = dataArray.map(data => {
       const {
         id,
-        largeImageUrl: imageURL,
+        largeImageURL: imageURL,
         webformatURL: src,
         tags: alt,
       } = data;
       return { id, imageURL, src, alt };
+    });
+    return this.setState(({ data }) => {
+      return {
+        data: [...data, ...newData],
+        total: totalHits,
+        status: 'resolved',
+      };
+    });
+  };
+
+  handleSubmit = searchQuery => {
+    if (this.state.query !== searchQuery) {
+      this.setState({ query: searchQuery });
     }
-    )
-  }
+    return;
+  };
+
+  handleLoadMore = () => {
+    this.setState(({ page }) => {
+      return { page: page + 1 };
+    });
+  };
+
+  toggleModal = () => {
+    this.setState(({ showModal }) => ({ showModal: !showModal }));
+  };
+
+  clickOnImage = id => {
+    this.setState({ imgId: id });
+    this.toggleModal();
+  };
+
+  handleData = () => {
+    return this.state.data.find(img => img.id === this.state.imgId);
+  };
 
 
   render() {
@@ -97,7 +129,7 @@ export class App extends Component {
 
         {status === 'rejected' && (
           <div className={styles.ImageGallery}>
-            <p>{'Something went wrong! ${error}'}</p>
+            <p>{`Something went wrong! ${error}`}</p>
             <Loader />
           </div>
         )}

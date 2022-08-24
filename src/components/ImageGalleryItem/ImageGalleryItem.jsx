@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 
 import styles from './ImageGalleryItem.module.css';
 
+
 export const ImageGalleryItem = ({ images }) => {
   return images.map(({ id, src, alt }) => {
     return (
