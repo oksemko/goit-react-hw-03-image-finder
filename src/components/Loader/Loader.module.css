@@ -1,5 +1,10 @@
 .Loader {
-  display: flex;
+    display: flex;
     justify-content: center;
     margin-bottom: 40px;
 }
+
+/* .Watch {
+  position: relative;
+  margin: 0 auto;
+} */
