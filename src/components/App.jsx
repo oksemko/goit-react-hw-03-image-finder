@@ -8,7 +8,8 @@ import { Button } from './Button/Button';
 import { Loader } from './Loader/Loader';
 import { Modal } from './Modal/Modal';
 
-import styles from './App.module.css';
+// import styles from './App.module.css';
+import styles from './Loader/Loader.module.css';
 
 
 export class App extends Component {
@@ -105,11 +106,13 @@ export class App extends Component {
     const { status, error, data, showModal, total } = this.state;
 
     return (
-      <div className="App">
+      <div className={App}>
         <Searchbar onSubmit={this.handleSubmit} />
         {data.length > 0 && (
           <ImageGallery data={this.state.data} onClick={this.clickOnImage} />
         )}
+
+
         {status === 'resolved' && data.length > 0 && data.length < total && (
           <>
             <Button onClick={this.handleLoadMore} />
@@ -119,10 +122,10 @@ export class App extends Component {
         {status === 'pending' && (
           <div className={styles.Watch}>
             <Watch
-              color="00BFFF"
+              color="#00BFFF"
               height={200}
               width={200}
-              arialabel="loading"
+              ariaLabel="watch-loading"
             />
             <Loader />
           </div>
@@ -131,7 +134,6 @@ export class App extends Component {
         {status === 'rejected' && (
           <div className={styles.ImageGallery}>
             <p>{`Something went wrong! ${error}`}</p>
-            <Loader />
           </div>
         )}
 

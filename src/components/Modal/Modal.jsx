@@ -29,6 +29,12 @@ export class Modal extends Component {
     }
   };
 
+  handleOverlayClick = event => {
+    if (event.currentTarget === event.target) {
+      this.props.onClose();
+    }
+  };
+
   render() {
     return createPortal(
       <div className={styles.Overlay} onClick={this.handleOverlayClick}>

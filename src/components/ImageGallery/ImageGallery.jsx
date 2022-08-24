@@ -11,7 +11,7 @@ export const ImageGallery = ({ data, onClick }) => {
     }
 
     onClick(Number(event.target.dataset.id));
-  }
+  };
 
   return (
     <>
@@ -25,3 +25,13 @@ export const ImageGallery = ({ data, onClick }) => {
 ImageGallery.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object.isRequired),
 };
+
+ImageGalleryItem.propTypes = {
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      src: PropTypes.string.isRequired,
+      alt: PropTypes.string.isRequired,
+    }),
+  ),
+}
