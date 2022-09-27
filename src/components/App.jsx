@@ -29,7 +29,7 @@ export class App extends Component {
       this.setState({ status: 'pending', data: [], page: 1 }, this.getPicture);
     }
     if (this.state.page !== prevState.page && this.state.page !== 1) {
-      this.setstate({ status: 'pending' }, this.getPicture);
+      this.setState({ status: 'pending' }, this.getPicture);
     }
   }
 
