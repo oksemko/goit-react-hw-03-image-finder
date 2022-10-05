@@ -106,7 +106,7 @@ export class App extends Component {
     const { status, error, data, showModal, total } = this.state;
 
     return (
-      <div className={App}>
+      <div className={styles.App}>
         <Searchbar onSubmit={this.handleSubmit} />
         {data.length > 0 && (
           <ImageGallery data={this.state.data} onClick={this.clickOnImage} />
