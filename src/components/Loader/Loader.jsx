@@ -4,7 +4,7 @@ import styles from './Loader.module.css';
 
 export const Loader = () => {
   <div className={styles.Watch}>
-      <Watch
+    <Watch
       color="00BFFF"
       height="200"
       width="200"
@@ -12,6 +12,7 @@ export const Loader = () => {
       arialabel="watch-loading"
     />
   </div>
+}
 
 
 
@@ -23,4 +24,3 @@ export const Loader = () => {
     // ariaLabel="watch-loading"
     // />
   // </div>
-}
